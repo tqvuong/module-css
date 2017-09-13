@@ -1,0 +1,151 @@
+.loading {
+    margin: 0 auto;
+    text-align: center;
+
+    &__title {
+        font-size: 3rem;
+    }
+
+    &__google {
+        background-color: #fff;
+
+        // &__showbox {
+        //     position: absolute;
+        //     top: 0;
+        //     bottom: 0;
+        //     left: 0;
+        //     right: 0;
+        //     padding: 5%;
+        // }
+
+        &__loader {
+            position: relative;
+            margin: 0 auto;
+            width: 10rem;
+
+            &:before {
+                content: '';
+                display: block;
+                padding-top: 100%;
+            }
+        }
+
+        &__circular {
+            animation: rotate 2s linear infinite;
+            height: 100%;
+            transform-origin: center center;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        &__path {
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0;
+            animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+            stroke-linecap: round;
+        }
+    }
+
+    &__infinite {
+        position: relative;
+
+        &__container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        // svg {
+        //     position: absolute;
+        //     top: 0;
+        //     bottom: 0;
+        //     left: 0;
+        //     right: 0;
+        //     margin: auto;
+        // }
+
+        &__outline {
+            fill: transparent;
+            stroke-width: 4;
+            stroke: #582a6b;
+            stroke-dasharray: 30rem*0.01, 30rem;
+            stroke-dashoffset: 0;
+            animation: anim 3000ms linear infinite;
+        }
+        
+        &__bg {
+            fill: transparent;
+            stroke-width: 4;
+            stroke: #424242;
+            opacity: 0.2;
+        }
+    }
+
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -3.5rem;
+    }
+
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -12.4rem;
+    }
+}
+
+@keyframes color {
+    100%,0% {
+        stroke: #d62d20;
+    }
+
+    40% {
+        stroke: #0057e7;
+    }
+
+    66% {
+        stroke: #008744;
+    }
+
+    80%,90% {
+        stroke: #ffa700;
+    }
+}
+
+@keyframes anim {
+    12.5% {
+        stroke-dasharray: 30rem*0.14, 30rem;
+        stroke-dashoffset: -30rem*0.11;
+    }
+    
+    43.75% {
+        stroke-dasharray: 30rem*0.35, 30rem;
+        stroke-dashoffset: -30rem*0.35;
+    }
+    
+    100% {
+        stroke-dasharray: 30rem*0.01, 30rem;
+        stroke-dashoffset: -30rem*0.99;
+    }
+} 
+

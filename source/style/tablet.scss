@@ -1,0 +1,6 @@
+// Import
+@import 'common/variables';
+
+@media (min-width: 768px) {
+    @import 'tablet/home';
+}
