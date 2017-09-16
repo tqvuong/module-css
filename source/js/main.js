@@ -24,18 +24,21 @@
 			this.y = y;
 		}
 
-		static calcDistance(first, second) {
-			const dx = first.x - second.x;
-			const dy = first.y - second.y;
-			console.log(Math.hypot(dx, dy));
+		static calcDistance(first, second, third) {
+			const distanceSegment = {
+				a: Math.hypot((first.x - second.x), (first.y - second.y)),
+				b: Math.hypot((second.x - third.x), (second.y - third.y)),
+				c: Math.hypot((third.x - first.x), (third.y - first.y)),
+			}
 		}
 	}
-
+	
 	const getDataClick = (data) => {
-		if (Array.isArray(data) && data.length > 2) {
-			const firstPoint = data[data.length - 2];
-			const secondPoint = data[data.length - 1];
-			PointClick.calcDistance(firstPoint, secondPoint);
+		if (Array.isArray(data) && data.length >= 3) {
+			const firstPoint = data[data.length - 3];
+			const secondPoint = data[data.length - 2];
+			const thirdPoint = data[data.length - 1];
+			PointClick.calcDistance(firstPoint, secondPoint, thirdPoint);
 		}
 	}
 
@@ -46,5 +49,4 @@
 	});
 
 	/*Calc area triangle */
-
 })();
