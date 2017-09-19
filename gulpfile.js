@@ -65,9 +65,9 @@ gulp.task('script', function() {
 		], {
 			base: dir.source,
 		})
-		.pipe(babel({
-			presets: ['es2015']
-		}))
+		// .pipe(babel({
+		// 	presets: ['es2015']
+		// }))
 		.pipe(gulp.dest(dir.source + '/src'))
 		.pipe(browserSync.stream());
 	}

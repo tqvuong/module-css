@@ -10,13 +10,13 @@
         get area() {
             return this.calArea();
         }
-        
+
         calArea() {
             return this.width * this.height;
         }
 	}
 
-	/*Calc distance between twice click*/	
+	/*Calc distance between twice click*/
 	let dataArr = [];
 	class PointClick {
 		constructor(x, y) {
@@ -32,7 +32,7 @@
 			}
 		}
 	}
-	
+
 	const getDataClick = (data) => {
 		if (Array.isArray(data) && data.length >= 3) {
 			const firstPoint = data[data.length - 3];
@@ -49,4 +49,15 @@
 	});
 
 	/*Calc area triangle */
+
+	/*determine mouses scroll*/
+	const navbar = document.querySelector('.js-scroll-navigation');
+	window.addEventListener('wheel', handleDOMContentLoaded = (e) => {
+		let delta = 0;
+		if (e.deltaY < 0 && navbar) {
+			navbar.classList.add('navigation__scroll-up');
+		} else {
+			navbar.classList.remove('navigation__scroll-up');
+		}
+	});
 })();
