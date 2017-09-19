@@ -42,16 +42,14 @@
                     background: #006666;
                     color: #fff;
                     transition: background 150ms;
-                }
-            }
+				}
 
-            .navigation {
-                &__dropdown {
-                    &__content {
-                        max-height: 20rem;
-                        transition: max-height 200ms ease;
-                    }
-                }
+				&__dropdown {
+					&__content {
+						max-height: 20rem;
+						transition: max-height 200ms ease;
+					}
+				}
             }
         }
 
@@ -73,7 +71,7 @@
                 padding: 12px 16px;
             }
         }
-        
+
         // Add caret
         & > a::after {
             content: '';
