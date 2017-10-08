@@ -1,10 +1,17 @@
+/**
+ * Gulp task, example by Vuong Tran
+ */
+
 const browserSync = require('browser-sync').create();
 const del = require('del');
 const path = require('path');
+const autoprefixer = require('autoprefixer');
 
 const gulp = require('gulp');
 const sass = require('gulp-sass');
-const babel = require("gulp-babel");
+const babel = require('gulp-babel');
+const postcss = require('gulp-postcss');
+const sourcemaps = require('gulp-sourcemaps');
 
 
 /*Create destination folder*/
@@ -37,8 +44,15 @@ const dir = {
 
 /*Task style*/
 gulp.task('style', function() {
+	const plugins = [
+		autoprefixer({browsers: ['last 2 version', 'ie >= 9']})
+	];
+
 	return gulp.src([path.join(dir.source, '/style/**/*.scss')])
-        .pipe(sass())
+		.pipe(sourcemaps.init())
+		.pipe(sass())
+		.pipe(postcss(plugins))
+		.pipe(sourcemaps.write())
         .pipe(gulp.dest('source/src/css'))
 		.pipe(browserSync.stream());
 	}
