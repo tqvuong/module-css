@@ -3,7 +3,6 @@
  */
 
 const browserSync = require('browser-sync').create();
-const del = require('del');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 
@@ -43,9 +42,9 @@ const dir = {
 
 
 /*Task style*/
-gulp.task('style', function() {
+gulp.task('style', () => {
 	const plugins = [
-		autoprefixer({browsers: ['last 2 version', 'ie >= 9']})
+		autoprefixer({ browsers: ['last 2 version', 'ie >= 9'] }),
 	];
 
 	return gulp.src([path.join(dir.source, '/style/**/*.scss')])
@@ -53,9 +52,9 @@ gulp.task('style', function() {
 		.pipe(sass())
 		.pipe(postcss(plugins))
 		.pipe(sourcemaps.write())
-        .pipe(gulp.dest('source/src/css'))
+		.pipe(gulp.dest('source/src/css'))
 		.pipe(browserSync.stream());
-	}
+}
 );
 
 
@@ -73,23 +72,26 @@ gulp.task('style', function() {
 
 
 /*Task copy script*/
-gulp.task('script', function() {
-	return gulp.src([
-		dir.source + '/js/**/*.js',
-		], {
+gulp.task('script', () => {
+	gulp.src(
+		[
+			`${dir.source}/js/**/*.js`,
+		],
+		{
 			base: dir.source,
-		})
-		// .pipe(babel({
-		// 	presets: ['es2015']
-		// }))
-		.pipe(gulp.dest(dir.source + '/src'))
+		}
+	)
+		.pipe(babel({
+			presets: ['es2015']
+		}))
+		.pipe(gulp.dest(`${dir.source}/src`))
 		.pipe(browserSync.stream());
-	}
+}
 );
 
 
 /*Task serve*/
-gulp.task('serve', ['style'], function() {
+gulp.task('serve', ['style'], () => {
 	browserSync.init({
 		notify: true,
 		port: 8000,
